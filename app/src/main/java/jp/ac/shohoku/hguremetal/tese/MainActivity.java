@@ -16,9 +16,15 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+
+
 
 
 public class MainActivity extends AppCompatActivity {
+
     private final static int RESULT_CAMERA = 1000;
     private ImageView imageView;
 
@@ -32,7 +38,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.kidougamen);
+
+        Button sendButton = findViewById(R.id.hazimerubutton);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), SubActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
 
         // カメラの部分
         imageView = findViewById(R.id.image_view);
@@ -95,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageBitmap(bitmap);
 
         }
+
+
     }
 
 
