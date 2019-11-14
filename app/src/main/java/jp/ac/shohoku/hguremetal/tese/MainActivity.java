@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kidougamen);
+        setContentView(R.layout.activity_main);
 
         Button sendButton = findViewById(R.id.hazimerubutton);
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -52,67 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // カメラの部分
-        imageView = findViewById(R.id.image_view);
-
-        Button cameraButton = findViewById(R.id.camera_button);
-        cameraButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, RESULT_CAMERA);
-                // ボタン押すとサウンドがなるよ
-                soundPool.play(mp3a, 1f, 1f, 0, 0, 1f);
-            }
-        });
-
-        // サウンドの部分 (効果音)
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
-            soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
-        }else{
-            AudioAttributes attr = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                    .build();
-            soundPool = new SoundPool.Builder()
-                    .setAudioAttributes(attr)
-                    .setMaxStreams(5)
-                    .build();
-        }
-        mp3a = soundPool.load(this, R.raw.a, 1);
-        mp3b = soundPool.load(this, R.raw.a, 1);
 
         // サウンドの部分(BGM)
         MediaPlayer Player = MediaPlayer.create(this, R.raw.bgm);
         Player.start();
         Player.setLooping(true);
 
-    }
 
-    // カメラの部分
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(requestCode == RESULT_CAMERA){
-            Bitmap bitmap;
-            // cancelしたケースも含む
-            if(data.getExtras()== null){
-                Log.d("debug","cancel ?");
-                return;
-            }
-            else{
-                bitmap = (Bitmap) data.getExtras().get("data");
-                if(bitmap != null){
-                    // 画面サイズを計測
-                    int bmpWidth = bitmap.getWidth();
-                    int bmpHeight = bitmap.getHeight();
-                    Log.d("debug",String.format("w= %d",bmpWidth));
-                    Log.d("debug",String.format("h= %d",bmpHeight));
-                }
-            }
 
-            imageView.setImageBitmap(bitmap);
 
-        }
+
 
 
     }
