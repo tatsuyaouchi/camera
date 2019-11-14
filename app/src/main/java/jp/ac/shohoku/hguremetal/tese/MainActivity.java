@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.os.Bundle;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     // サウンドの部分
     SoundPool soundPool;
+    MediaPlayer player;
     int mp3a;
     int mp3b;
 
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // サウンドの部分
+        // サウンドの部分 (効果音)
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
             soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         }else{
@@ -61,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
         }
         mp3a = soundPool.load(this, R.raw.a, 1);
         mp3b = soundPool.load(this, R.raw.a, 1);
+
+        // サウンドの部分(BGM)
+        MediaPlayer Player = MediaPlayer.create(this, R.raw.bgm);
+        Player.start();
+        Player.setLooping(true);
+
     }
 
     // カメラの部分
@@ -88,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
 
 
 
