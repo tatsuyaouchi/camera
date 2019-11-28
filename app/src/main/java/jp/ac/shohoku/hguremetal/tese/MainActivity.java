@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Button sendButton = findViewById(R.id.hazimerubutton);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button sendButton2 = findViewById(R.id.asobikata);
+        sendButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), SubActivity2.class);
+                startActivity(intent);
+            }
+        });
+        
 
 
 
