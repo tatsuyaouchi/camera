@@ -3,24 +3,13 @@ package jp.ac.shohoku.hguremetal.tese;
 import androidx.appcompat.app.AppCompatActivity;
 //AndroidX
 
-import android.graphics.Bitmap;
 import android.content.Intent;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.os.Bundle;
-import android.media.AudioAttributes;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-import android.os.Build;
-import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
-import android.os.Bundle;
-
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -50,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button sendButton2 = findViewById(R.id.asobikata);
+        Button sendButton2 = findViewById(R.id.asobikatabutton);
         sendButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
